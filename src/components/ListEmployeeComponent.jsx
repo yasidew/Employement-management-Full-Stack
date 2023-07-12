@@ -8,21 +8,27 @@ class ListEmployeeComponent extends Component {
     this.state={
         employees:[]
     }
+    this.addEmployyee = this.addemployee.bind(this)  //binding the method to the constructor, so that it can be called from the render method
 } 
     componentDidMount(){  //lifecycle method, called after component is rendered
 
-        EmployeeService.getEmployees().then((res => {
+        EmployeeService.getEmployees().then((res) => {
 
             this.setState({employees: res.data});
 
-        }
-        ));
+        });
 
+    }
+    addEmployee(){
+        this.props.history.push('/add-employee');
     }
    render() {
         return (
             <div>
             <h2 className='text-center'>Employee List</h2>
+            <div className = 'row'>
+                <button className='btn btn-primary' onClick={this.addEmployee}>Add Employee</button>
+            </div>
             <div className='row'></div>
                 <table className='table table-striped table-bordered'>
                 <thead>
