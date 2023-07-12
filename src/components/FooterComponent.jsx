@@ -13,7 +13,6 @@ class FooterComponent extends Component {
             <div>
                 <footer className='footer'>
                     <span className='text-muted'>2023 All Rights Reserved</span>
-
                 </footer>
                 
             </div>
