@@ -9,7 +9,13 @@ class ListEmployeeComponent extends Component {
         employees:[]
     }
     this.addEmployyee = this.addemployee.bind(this)  //binding the method to the constructor, so that it can be called from the render method
+    this.editEmployee = this.editEmployee.bind(this)
 } 
+
+editEmployee(id){
+    this.props.history.push(`/update-employee/${id}`)
+
+}
     componentDidMount(){  //lifecycle method, called after component is rendered
 
         EmployeeService.getEmployees().then((res) => {
@@ -46,6 +52,9 @@ class ListEmployeeComponent extends Component {
                                 <td> {employee.firstName} </td>
                                 <td> {employee.lastName} </td>
                                 <td> {employee.emailId} </td>
+                                <td>
+                                    <button onClick={() => this.editEmployee(employee.id)} className='btn-btn-info'> Update </button>
+                                </td>
                             </tr>
 
                         )}
